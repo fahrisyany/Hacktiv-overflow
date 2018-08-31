@@ -40,7 +40,7 @@
         <v-layout justify-center align-center>
           <v-flex shrink>
     <transition name="fade" mode ="out-in" enter-active-class="animated fadeInDown" leave-active-class="animated fadeOutDown">
-    <router-view/>
+    <router-view></router-view>
     </transition>
           </v-flex>
         </v-layout>
@@ -96,7 +96,7 @@ import { mapState, mapMutations } from "vuex";
 export default {
   data() {
     return {
-      token: localStorage.token,
+      token: localStorage.getItem('token'),
       menu: [
         { icon: "login", path: "/login", title: "Login" },
         { icon: "register", path: "/register", title: "Register" },
@@ -132,7 +132,6 @@ export default {
       localStorage.removeItem("username");
       localStorage.removeItem("id");
 
-      this.$router.push("/");
       this.token = undefined;
       this.$store.commit(`setLoggedIn`, false);
     }

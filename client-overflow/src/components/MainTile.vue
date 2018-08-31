@@ -1,5 +1,5 @@
 <template>
-    <v-expansion-panel>
+    <v-expansion-panel v-if="listQuestions">
    
       <v-expansion-panel-content
         v-for="(question,index) in listQuestions"
@@ -55,7 +55,7 @@ export default {
   methods: {
     showQuestion: function() {
       axios
-        .get("http://localhost:3000/users/showQuestion")
+        .get("http://35.186.157.131/users/showQuestion")
         .then(result => {
           // console.log(`===>`, result.data.question);
           this.listQuestions = result.data.question;
@@ -71,7 +71,7 @@ export default {
       let token = localStorage.getItem("token");
       axios
         .put(
-          `http://localhost:3000/users/upvoteQuestion/${ChoosenQuestionId}`,
+          `http://35.186.157.131/users/upvoteQuestion/${ChoosenQuestionId}`,
           {},
           {
             headers: {
@@ -95,7 +95,7 @@ export default {
 
       axios
         .put(
-          `http://localhost:3000/users/downvoteQuestion/${ChoosenQuestionId}`,
+          `http://35.186.157.131/users/downvoteQuestion/${ChoosenQuestionId}`,
           {},
           {
             headers: {

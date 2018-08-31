@@ -134,7 +134,7 @@ export default {
     getOwnQuestion() {
       let token = localStorage.getItem("token");
       axios
-        .get("http://localhost:3000/users/showMyQuestion", {
+        .get("http://35.186.157.131/users/showMyQuestion", {
           headers: {
             token
           }
@@ -164,7 +164,7 @@ export default {
           }).then(() => {
             axios({
               method: "DELETE",
-              url: `http://localhost:3000/users/deleteQuestion/${ChoosenQuestionId}`,
+              url: `http://35.186.157.131/users/deleteQuestion/${ChoosenQuestionId}`,
 
               headers: {
                 token: localStorage.getItem("token")
@@ -182,7 +182,7 @@ export default {
       let token = localStorage.getItem("token");
       axios
         .get(
-          `http://localhost:3000/users/showOneQuestion/${ChoosenQuestionId}`,
+          `http://35.186.157.131/users/showOneQuestion/${ChoosenQuestionId}`,
           {
             headers: {
               token
@@ -202,7 +202,7 @@ export default {
     updateQuestion: function() {
       axios({
         method: "PUT",
-        url: `http://localhost:3000/users/editQuestion/${
+        url: `http://35.186.157.131/users/editQuestion/${
           this.updateQuestionId
         }`,
         data: {

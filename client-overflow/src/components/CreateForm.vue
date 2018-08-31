@@ -49,7 +49,7 @@ export default {
     createArticle: function() {
       axios({
         method: "POST",
-        url: "http://localhost:3000/users/createQuestion",
+        url: "http://35.186.157.131/users/createQuestion",
         data: {
           questionTitle: this.questionTitle,
           questionBody: this.myHTML

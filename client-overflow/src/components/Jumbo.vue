@@ -12,11 +12,14 @@
           <div class="title mb-3">Lets Ask Some Questions you wish to know!</div>
 
           <v-btn
+          
             class="mx-0"
             color="grey"
             large
           >
+          <div >
             <router-link to="/account">Ask Question</router-link>
+            </div>
           </v-btn>
         </v-flex>
       </v-layout>

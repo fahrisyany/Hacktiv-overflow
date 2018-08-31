@@ -130,7 +130,7 @@ export default {
     getQuestion: function() {
       let token = localStorage.getItem("token");
       axios
-        .get(`http://localhost:3000/users/showOneQuestion/${this.questionId}`, {
+        .get(`http://35.186.157.131/users/showOneQuestion/${this.questionId}`, {
           headers: {
             token
           }
@@ -149,7 +149,7 @@ export default {
     createAnswer: function() {
       axios({
         method: "POST",
-        url: `http://localhost:3000/users/createAnswer/${this.questionId}`,
+        url: `http://35.186.157.131/users/createAnswer/${this.questionId}`,
         data: {
           answerBody: this.myHTML
         },
@@ -173,7 +173,7 @@ export default {
     },
     getAnswer: function() {
       axios
-        .get(`http://localhost:3000/users/getAnswer/${this.questionId}`, {})
+        .get(`http://35.186.157.131/users/getAnswer/${this.questionId}`, {})
         .then(result => {
           this.questionAnswers = result.data.answer;
         })
@@ -187,7 +187,7 @@ export default {
       let token = localStorage.getItem("token");
 
       axios
-        .get(`http://localhost:3000/users/getOneAnswer/${ChoosenAnswerId}`, {
+        .get(`http://35.186.157.131/users/getOneAnswer/${ChoosenAnswerId}`, {
           headers: {
             token
           }
@@ -204,7 +204,7 @@ export default {
     editAnswer: function() {
       axios({
         method: "PUT",
-        url: `http://localhost:3000/users/editAnswer/${this.oneAnswerId}`,
+        url: `http://35.186.157.131/users/editAnswer/${this.oneAnswerId}`,
         data: {
           answerBody: this.oneAnswer
         },

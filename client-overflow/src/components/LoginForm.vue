@@ -61,9 +61,11 @@ export default {
 
   methods: {
     loginFb() {
+      let self = this;
       fbLogin
         .signInWithPopup(provider)
         .then(function(result) {
+          // console.log('hahahahahah', result)
           // This gives you a Facebook Access Token. You can use it to access the Facebook API.
           var token = result.credential.accessToken;
           // The signed-in user info.
@@ -71,20 +73,20 @@ export default {
           localStorage.setItem("token", token);
           localStorage.setItem("username", user.displayName);
 
-          //   swal("Login", "Successs", "success").then(() => {
-          //     swal(
-          //       `Wellcome ${
-          //         localStorage.username
-          //       } feel free to write whatever you want!`
-          //     );
-          //     // console.log(`++++++`,this.$router);
-          //   });
-          //   this.$router.push("/");
+          swal("Login", "Successs", "success").then(() => {
+            swal(
+              `Wellcome ${
+                localStorage.username
+              } feel free to write whatever you want!`
+            );
+            // console.log(`++++++`,this.$router);
+          });
+          self.logIn();
+          self.$router.push("/");
 
-          this.logIn();
-          this.$router.push("/");
         })
         .catch(function(error) {
+          console.log(error);
           // Handle Errors here.
           var errorCode = error.code;
           var errorMessage = error.message;
@@ -98,7 +100,7 @@ export default {
     login() {
       axios({
         method: "POST",
-        url: "http://localhost:3000/login",
+        url: "http://35.186.157.131/login",
         data: {
           email: this.email,
           password: this.password
@@ -142,10 +144,12 @@ export default {
     ...mapMutations(["setLoggedIn"]),
 
     logIn() {
+      console.log("masuk sini 2222");
+
       this.$store.commit(`setLoggedIn`, true); // mutate loggedIn state in vuex
     }
   },
-  
+
   mounted() {
     this.$validator.localize("en", this.dictionary);
   }
